@@ -27,6 +27,16 @@ def make_parser():
 	description = "Store and retrieve snippets of text"
 	parser = argparse.ArgumentParser(description=description)
 
+	subparser = parser.add_subparsers(help="Available commands")
+
+	#Subparser for the put command
+	logging.debug("Constructing put subparser")
+	put_parser = subparser.add_parser("put", help="Store a snippet")
+	put_parser.add_argument("name", help="The name of a snippet")
+	put_parser.add_argument("snippet", help="The snippet of text to be stored")
+	put_parser.add_argument("filename", default="snippets.csv", nargs ="?", help="The snippet filename")
+	put_parser.set_defaults(command="put")
+
 	return parser
 
 def main():
