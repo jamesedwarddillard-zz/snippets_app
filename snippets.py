@@ -4,6 +4,7 @@ App for storing and retrieving snippets of text
 
 import logging
 import csv
+import argparse
 
 #Set the log output file and the log level
 logging.basicConfig(filename="output.log", level=logging.DEBUG)
@@ -18,3 +19,11 @@ def put(name,snippet,filename):
 		writer.writerow([name, snippet])
 	logging.debug("Write successful")
 	return name, snippet
+
+def make_parser():
+	""" Construct the command line parser """
+	logging.info("Constructing the parser")
+	description = "Store and retrieve snippets of text"
+	parser = argparse.ArgumentParser(description=description)
+
+	return parser
