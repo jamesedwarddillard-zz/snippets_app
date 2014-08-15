@@ -34,7 +34,12 @@ def get(name, filename):
 		reader = csv.reader(f)
 		logging.debug("Readng file for snippet".format(filename))
 		data = {rows[1]:rows[0] for rows in reader}
-		snippet = data[name]
+		try:
+			snippet = data[name]
+			logging.debug("Retrieving snippet.")
+		except KeyError: 
+			snippet = "hasn't been snipped yet so can't be recalled. Use 'put' to save it."
+			logging.debug("Snippet hasn't been saved so couldn't be recalled.")
 	return name, snippet, filename
 
 
