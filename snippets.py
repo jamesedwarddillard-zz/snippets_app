@@ -21,6 +21,16 @@ def put(name,snippet,filename):
 	logging.debug("Write successful")
 	return name, snippet
 
+def get(name, filename):
+	"""Retrieving a snippet that has already been saved"""
+	logging.info("Retrieving snippet called {} from {}".format(name, filename))
+	logging.debug("Opening file")
+	with open(filename, "rb") as f:
+		reader = csv.reader(f)
+		logging.debug("Readng file for snippet").format(filename)
+		data = {rows[0]:rows[1] for rows in reader}
+
+
 def make_parser():
 	""" Construct the command line parser """
 	logging.info("Constructing the parser")
