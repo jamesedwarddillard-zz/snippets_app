@@ -1,5 +1,10 @@
 """
 App for storing and retrieving snippets of text
+
+-> need to add a get command
+-> need to put in an error for snippets being called that haven't been created yet
+-> need to make sure it works
+
 """
 
 import logging
